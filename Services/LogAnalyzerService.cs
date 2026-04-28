@@ -6,33 +6,32 @@ namespace LogAnalyzer.Services
     {
         public void Analyze(List<LogEntry> logs)
         {
-            int infoCount = 0;
-            int warningCount = 0;
-            int errorCount = 0;
+            var infoCount = logs.Count(x => x.Level == "INFO");
+            var warningCount = logs.Count(x => x.Level == "WARNING");
+            var errorCount = logs.Count(x => x.Level == "ERROR");
 
-            foreach (var log in logs)
-            {
-                switch(log.Level)
-                {
-                    case "INFO":
-                        infoCount++;
-                        break;
-
-                    case "WARNING":
-                        warningCount++;
-                        break;
-
-                    case "ERROR":
-                        errorCount++;
-                        Console.WriteLine("ERROR:" + log.Message);
-                        break;
-                }
-            }
-
-            Console.WriteLine("========== RESULT ==========");
+            Console.WriteLine("========== SUMMARY ==========");
             Console.WriteLine($"INFO: {infoCount}");
             Console.WriteLine($"WARNING: {warningCount}");
             Console.WriteLine($"ERROR: {errorCount}");
+
+            Console.WriteLine("\n===== ERROR TREND =====");
+
+            var trend = logs
+                .Where(x => x.Level == "ERROR")
+                .GroupBy(x => x.Timestamp.ToString("HH:mm"))
+                .Select(g => new { Time = g.Key, Count = g.Count() });
+
+            foreach (var t in trend)
+            {
+                Console.WriteLine($"{t.Time} ¡ú {t.Count}");
+            }
+        }
+
+        //Time filter
+        public List<LogEntry> FilterByTime(List<LogEntry> logs, DateTime from)
+        {
+            return logs.Where(x => x.Timestamp >= from).ToList();
         }
     }
 }
