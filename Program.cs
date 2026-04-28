@@ -2,6 +2,9 @@
 
 var filePath = Path.Combine(AppContext.BaseDirectory, "log.txt");
 
+var monitor = new LogMonitorService(filePath);
+monitor.Start();
+
 //1. parse
 
 var parser = new LogParser();

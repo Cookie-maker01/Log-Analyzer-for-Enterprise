@@ -30,12 +30,12 @@ namespace LogAnalyzer.Services
                         continue;
                     }
 
-                    using var stream = new FileStream(_filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)£»
+                    using var stream = new FileStream(_filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                     stream.Seek(_lastPosition, SeekOrigin.Begin);
 
                     using var reader = new StreamReader(stream);
 
-                    string ling;
+                    string line;
                     while ((line = reader.ReadLine()) != null)
                     {
                         ProcessLine(line);
@@ -48,7 +48,7 @@ namespace LogAnalyzer.Services
                     Console.WriteLine("ERROR:" + ex.Message);
                 }
 
-                Thread.Sleep(1000)£»
+                Thread.Sleep(1000);
             }
         }
 
