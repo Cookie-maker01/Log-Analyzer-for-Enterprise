@@ -11,7 +11,7 @@ var logs = parser.Parse(filePath);
 //2. filter
 
 var analyzer = new LogAnalyzerService();
-logs = analyzer.FilterByTime(logs, DateTime.Nwo.AddHours(-1));
+//logs = analyzer.FilterByTime(logs, DateTime.Now.AddDays(-1));
 
 //3. analyze
 

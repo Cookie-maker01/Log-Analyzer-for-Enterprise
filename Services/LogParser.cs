@@ -29,9 +29,6 @@ namespace LogAnalyzer.Services
             }
 
             return logs;
-            }
-
-            return logs;
         }
     }
 }

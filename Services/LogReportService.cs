@@ -5,7 +5,7 @@ namespace LogAnalyzer.Services
 {
     public class LogReportService
     {
-        public void GenerateReport(List<logEntry> logs)
+        public void GenerateReport(List<LogEntry> logs)
         {
             var report = new
             {
@@ -20,11 +20,11 @@ namespace LogAnalyzer.Services
                 WriteIndented = true
             });
 
-            var path = path.Combine("Reports", "report.json");
+            var path = Path.Combine("Reports", "report.json");
 
             Directory.CreateDirectory("Reports");
 
-            File.WriteAllText(path, json)
+            File.WriteAllText(path, json);
 
             Console.WriteLine("\nJSON report generated at: " + path);
         }
