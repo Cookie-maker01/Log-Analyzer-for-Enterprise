@@ -1,5 +1,6 @@
-2026-04-17 10:00:00 INFO GET /home 200
-2026-04-17 10:01:00 ERROR GET /api/orders 500
-2026-04-17 10:02:00 WARNING GET /api/users 404
-2026-04-17 10:03:00 INFO GET /home 200
-2026-04-17 10:04:00 ERROR POST /api/orders 500
+2026-04-24 10:00:01 INFO Application started
+2026-04-24 10:00:02 INFO User login success
+2026-04-24 10:00:03 WARNING Disk space low
+2026-04-24 10:00:04 ERROR Database connection failed
+2026-04-24 10:00:05 ERROR Timeput exception
+2026-04-24 10:00:06 INFO Request processed
